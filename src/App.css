@@ -1,38 +1,142 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #f7cac9, #92a8d1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
 .App {
   text-align: center;
+  padding: 30px;
+  color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.square {
+  width: 100px;
+  height: 100px;
+  font-size: 2rem;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid #333;
+  transition: 0.2s;
+}
+
+.square.X {
+  color: #ff4c4c;
+}
+
+.square.O {
+  color: #4c8bff;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+.winner {
+  font-size: 2rem;
+  color: #28a745;
+  margin-top: 20px;
+  animation: pop 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.start-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  margin: auto;
+  gap: 15px;
+  background: #ffffffbb;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.start-form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.players {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.player {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.player img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-bottom: 5px;
+  background-color: #ddd; /* Default background for missing images */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.player img[src=""] {
+  content: url(''); /* Replace with your default image path */
+}
+
+.player-name {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.player-name.X {
+  color: #ff4c4c;
+}
+
+.player-name.O {
+  color: #4c8bff;
+}
+
+.player-name.winner {
+  font-weight: bold;
+  text-decoration: underline;
+  animation: pop 0.8s ease-in-out infinite alternate;
+}
+
+.player-name.winner.X {
+  color: #ff4c4c;
+}
+
+.player-name.winner.O {
+  color: #4c8bff;
 }
